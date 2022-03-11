@@ -101,7 +101,7 @@ let baseMaps = {
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
     center: [30, 30],
-    zoom: 3,
+    zoom: 2,
     layers: [streets]
 });  
 
@@ -117,13 +117,12 @@ d3.json(airportData).then(function(data) {
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJSON(data).addTo(map);
 
-// Grabbing our GeoJSON data using onEachFeature() Function.
-L.geoJSON(data, {
-    // We turn each feature into a marker on the map.
-    onEachFeature: function(feature, layer) {
-      console.log(layer);
-      layer.bindPopup("<h2>Airport code: " + feature.properties.faa + "</h2> <hr> <h2>Airport name: " + feature.properties.name + "</h2>");
-    }
-  }).addTo(map);    
+// // Grabbing our GeoJSON data using onEachFeature() Function.
+// L.geoJSON(airportData, {
+//     // We turn each feature into a marker on the map.
+//     onEachFeature: function(feature, layer) {
+//       console.log(layer);
+//       layer.bindPopup("<h2>" + feature.properties.city + "</h2>");
+//     }
+//   }).addTo(map);  
 });
-
